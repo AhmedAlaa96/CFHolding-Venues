@@ -2,6 +2,8 @@ package com.ahmed.cfholding_venues.data.sharedprefrences
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.ahmed.cfholding_venues.data.models.dto.User
+import com.ahmed.cfholding_venues.utils.Constants
 import com.ahmed.cfholding_venues.utils.Constants.SharedPreference.SHARED_PREF_NAME
 import com.google.gson.Gson
 
@@ -33,6 +35,13 @@ class PreferencesDataSource(context: Context, private val mGson: Gson) : IPrefer
         return mPrefs.getInt(key, defaultValue)
     }
 
+    override fun saveUserData(user: User) {
+        setString(Constants.SharedPreference.USER_KEY, mGson.toJson(user))
+    }
+
+    override fun getUserData(): User? {
+        return mGson.fromJson(getString(Constants.SharedPreference.USER_KEY, ""), User::class.java)
+    }
 
 
 }
