@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainNavFragment">
+    <fragment
+        android:id="@+id/mainNavFragment"
+        android:name="com.ahmed.cfholding_venues.ui.mainnav.MainNavFragment"
+        android:label="fragment_main_nav"
+        tools:layout="@layout/fragment_main_nav" >
+        <action
+            android:id="@+id/action_to_profile_nav"
+            app:destination="@id/profile_nav" />
+        <action
+            android:id="@+id/action_to_terms_nav"
+            app:destination="@id/terms_nav" />
+    </fragment>
+
+
+    <include app:graph="@navigation/profile_nav" />
+    <include app:graph="@navigation/terms_nav" />
+
+</navigation>

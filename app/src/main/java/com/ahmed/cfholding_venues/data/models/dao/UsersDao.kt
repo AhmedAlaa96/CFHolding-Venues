@@ -8,8 +8,8 @@ interface UsersDao {
     @Query("SELECT * FROM users")
     fun getAllUsers(): List<User>?
 
-    @Query("SELECT * FROM users Where id=:id")
-    fun getRepoById(id: Int?): User?
+    @Query("SELECT * FROM users Where email=:email AND password =:password")
+    fun getUserByEmailAndPassword(email: String?, password: String?): User?
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateUser(user: User)
@@ -17,8 +17,5 @@ interface UsersDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(user: User)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: ArrayList<User>)
 
 }

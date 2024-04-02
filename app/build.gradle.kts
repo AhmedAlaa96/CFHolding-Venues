@@ -44,6 +44,8 @@ android {
     productFlavors {
         create("live") {
             buildConfigField("String", "BASE_NETWORK_URL", "\"https://api.foursquare.com/\"")
+            buildConfigField("String", "CLIENT_ID", "\"4EQRZPSGKBZGFSERGJY055FRW2OSPJRZYR4C3J0JN2CQQFIV\"")
+            buildConfigField("String", "CLIENT_SECRET", "\"AJR4B5LLRONWAJWJJOACHAFLCWS2YJAZMGQNFFZQP0IB3THR\"")
         }
     }
 
@@ -66,6 +68,7 @@ dependencies {
 
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     kapt(libs.room.compiler)
     kapt(libs.metadata.jvm)
 
