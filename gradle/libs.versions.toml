@@ -3,24 +3,76 @@ agp = "8.3.1"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 appcompat = "1.6.1"
 material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+lifeCycleVersion = "2.3.1"
+hiltVersion = "2.48"
+navigationSafeArgsGradlePlugin = "2.5.0"
+kotlinMetaData = "0.5.0"
+roomVersion = "2.5.2"
+retrofitVersion = "2.9.0"
+okHttpVersion = "4.9.1"
+navVersion = "2.5.3"
+swipeToRefreshVersion = "1.1.0"
+convert_scalars = "2.0.1"
+glideVersion = "4.16.0"
+junitVersionExt = "1.1.5"
+mockitoVersion = "5.2.0"
+coroutineTestVersion = "1.3.8"
+idlingVersion = "1.0.0"
+testRunnerVersion = "1.5.2"
+baristaVersion = "4.2.0"
+mockitoKotlinVersion= "3.1.0"
+archCoreVersion= "2.2.0"
+navigationPluginVersion = "2.5.0"
+espressoVersion = "3.5.1"
 
 [libraries]
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-navigation = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navVersion" }
+androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-runtime", version.ref = "lifeCycleVersion" }
+androidx-swipeToRefresh = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swipeToRefreshVersion" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+metadata-jvm = { group = "org.jetbrains.kotlinx", name = "kotlinx-metadata-jvm", version.ref = "kotlinMetaData" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+retrofit-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
+retrofit-logger = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttpVersion" }
+retrofit-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "convert_scalars" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
+hilt-compile = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltVersion" }
+
+
+#[test]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlinVersion" }
+arch-core = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCoreVersion" }
+mockito-kotlin-nhaarman = { group = "com.nhaarman.mockitokotlin2", name = "core-testing", version.ref = "archCoreVersion" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoVersion" }
+kotlinx-corutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutineTestVersion" }
+
+#[androidTest]
+idling-resource = { group = "com.jakewharton.espresso", name = "okhttp3-idling-resource", version.ref = "idlingVersion" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersionExt" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoVersion" }
+test-runner = { group = "androidx.test", name = "runner", version.ref = "testRunnerVersion" }
+barista = { group = "com.adevinta.android", name = "barista", version.ref = "baristaVersion"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidNavigation = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigationPluginVersion" }
+androidHilt = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
 
