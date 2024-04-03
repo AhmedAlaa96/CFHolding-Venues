@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <!-- Example: Profile Picture -->
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_launcher_background"
+        android:contentDescription="Profile Picture"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <!-- Example: User Name -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:text="@string/venues"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+</LinearLayout>

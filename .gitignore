@@ -12,4 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+*.apk
 local.properties
+*.json
+*.dm

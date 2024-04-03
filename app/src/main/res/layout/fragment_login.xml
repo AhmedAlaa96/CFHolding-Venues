@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/size_16">
+
+        <TextView
+            android:id="@+id/txtAppNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/login_label"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_32"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/btnLogin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.25" />
+
+        <!-- LOGIN SECTION -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_40"
+            android:hint="@string/hint_email"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="@dimen/size_1"
+            app:cursorColor="@color/black"
+            app:cursorErrorColor="@color/black"
+            app:errorEnabled="true"
+            app:boxStrokeErrorColor="@color/red"
+            app:errorTextColor="@color/red"
+            app:errorIconTint="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/textInputLayoutPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAppNameLabel"
+            app:placeholderTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_8"
+            android:hint="@string/hint_password"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidth="@dimen/size_1"
+            app:cursorColor="@color/black"
+            app:cursorErrorColor="@color/black"
+            app:errorEnabled="true"
+            app:errorTextColor="@color/red"
+            app:boxStrokeErrorColor="@color/red"
+            app:errorIconTint="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail"
+            app:passwordToggleEnabled="true"
+
+            app:passwordToggleTint="@color/black"
+            app:placeholderTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            style="@style/primaryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_8"
+            android:text="@string/login"
+            app:layout_constraintBottom_toTopOf="@id/btnSignup" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignup"
+            style="@style/secondaryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/account_yet"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <include
+        android:id="@+id/viewProgress"
+        layout="@layout/view_loading"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/viewFullProgress"
+        layout="@layout/view_full_loading"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/errorLayout"
+        layout="@layout/view_error_layout"
+        android:visibility="gone" />
+</androidx.constraintlayout.widget.ConstraintLayout>
