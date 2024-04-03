@@ -1,13 +1,16 @@
 package com.ahmed.cfholding_venues.utils
 
 import android.content.Context
-import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.net.Uri
 import android.os.Build
 import com.ahmed.cfholding_venues.BuildConfig
-import java.lang.Exception
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
 object Utils {
     fun checkConnection(context: Context): Boolean {
@@ -39,8 +42,28 @@ object Utils {
         }
     }
 
-    fun openUrlInBrowser(context: Context, url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        context.startActivity(intent)
+    fun getPackageName(): String {
+        return Constants.General.PACKAGE_NAME
     }
+
+    fun drawableToBitmapDescriptor(drawable: Drawable): BitmapDescriptor {
+        // Convert the drawable to a Bitmap
+        val bitmap = if (drawable is BitmapDrawable) {
+            drawable.bitmap
+        } else {
+            val bitmap = Bitmap.createBitmap(
+                drawable.intrinsicWidth,
+                drawable.intrinsicHeight,
+                Bitmap.Config.ARGB_8888
+            )
+            val canvas = Canvas(bitmap)
+            drawable.setBounds(0, 0, canvas.width, canvas.height)
+            drawable.draw(canvas)
+            bitmap
+        }
+
+        // Create a BitmapDescriptor from the Bitmap
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
 }

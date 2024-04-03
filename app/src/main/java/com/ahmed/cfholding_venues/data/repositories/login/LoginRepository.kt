@@ -9,6 +9,7 @@ import com.ahmed.cfholding_venues.di.IoDispatcher
 import com.ahmed.cfholding_venues.ui.base.BaseRepository
 import com.ahmed.cfholding_venues.ui.base.IBaseRepository
 import com.ahmed.cfholding_venues.utils.connection_utils.IConnectionUtils
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -21,8 +22,9 @@ class LoginRepository @Inject constructor(
     mIRemoteDataSource: IRemoteDataSource,
     private val mILocalDataSource: ILocalDataSource,
     private val mIPreferencesDataSource: IPreferencesDataSource,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, dispatcher),
+    mGson: Gson,
+    @IoDispatcher override val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource,mGson, dispatcher),
     ILoginRepository {
     override fun login(email: String, password: String): Flow<Status<User>> {
         return flow {

@@ -8,8 +8,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Keep
 data class VenuesRequest(
-    private val latitude: Double? = null,
-    private val longitude: Double? = null
+    val latitude: Double? = null,
+    val longitude: Double? = null
 ) : Parcelable {
 
     fun getLatLongParam(): String {

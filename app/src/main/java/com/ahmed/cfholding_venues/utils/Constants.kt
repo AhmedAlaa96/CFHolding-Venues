@@ -9,6 +9,7 @@ object Constants {
     }
 
     object General {
+        const val PACKAGE_NAME: String= "com.ahmed.cfholding_venues"
         const val PASSWORD_REGEX = "[A-Za-z0-9!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]"
         const val EMPTY_TEXT = ""
         const val DASH_TEXT = "-"
@@ -59,6 +60,7 @@ object Constants {
 
     object RequestCodes{
         const val REQUEST_APP_SETTINGS = 123321
+        const val PERMISSION_REQUEST_CODE = 456654
     }
 
     object PermissionTag {
