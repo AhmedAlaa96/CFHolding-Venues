@@ -148,4 +148,8 @@ class HomeViewModel @Inject constructor(
         }"
     }
 
+    fun logout(){
+        mUseCase.logout()
+    }
+
 }

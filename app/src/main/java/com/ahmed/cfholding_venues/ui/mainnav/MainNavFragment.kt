@@ -7,19 +7,24 @@ import android.view.ViewGroup
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.ahmed.cfholding_venues.R
 import com.ahmed.cfholding_venues.databinding.FragmentMainNavBinding
 import com.ahmed.cfholding_venues.ui.base.BaseFragment
 import com.ahmed.cfholding_venues.ui.base.IToolbar
 import androidx.navigation.ui.setupWithNavController
+import com.ahmed.cfholding_venues.ui.home.HomeViewModel
 import com.ahmed.cfholding_venues.utils.utilities.UIUtils
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainNavFragment : BaseFragment<FragmentMainNavBinding>(), IToolbar {
 
     private lateinit var navController: NavController
+    private val viewModel: HomeViewModel by viewModels()
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentMainNavBinding
         get() = FragmentMainNavBinding::inflate
 
@@ -73,7 +78,15 @@ class MainNavFragment : BaseFragment<FragmentMainNavBinding>(), IToolbar {
                     getString(R.string.logout),
                     getString(R.string.cancel),
                     { _, _ ->
-                        // TODO:: CALL ViewModel
+                        viewModel.logout()
+                        navigateToAndChangeStartDestination(
+                            R.navigation.app_nav,
+                            R.id.loginFragment,
+                            navOptions = NavOptions.Builder()
+                                .setLaunchSingleTop(true)
+                                .setPopUpTo(R.id.mainNavFragment, true)
+                                .build()
+                        )
                     },
                     { dialog, _ ->
                         dialog.dismiss()

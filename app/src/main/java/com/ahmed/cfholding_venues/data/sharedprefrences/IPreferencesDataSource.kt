@@ -7,4 +7,6 @@ interface IPreferencesDataSource {
 
     fun saveUserData(user: User)
     fun getUserData(): User?
+
+    fun clearUserData()
 }

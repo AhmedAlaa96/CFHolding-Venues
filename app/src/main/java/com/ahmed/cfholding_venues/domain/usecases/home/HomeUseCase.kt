@@ -19,6 +19,10 @@ class HomeUseCase @Inject constructor(private val repository: IHomeRepository) :
             .map(::mapGetVenuesResponse)
     }
 
+    override fun logout() {
+        repository.logout()
+    }
+
 
     private fun mapGetVenuesResponse(status: Status<VenuesResponse>): Status<ArrayList<Venue>> {
         return when (validateResponse(status)) {

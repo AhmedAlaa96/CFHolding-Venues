@@ -43,5 +43,9 @@ class PreferencesDataSource(context: Context, private val mGson: Gson) : IPrefer
         return mGson.fromJson(getString(Constants.SharedPreference.USER_KEY, ""), User::class.java)
     }
 
+    override fun clearUserData() {
+        setString(Constants.SharedPreference.USER_KEY, "")
+    }
+
 
 }

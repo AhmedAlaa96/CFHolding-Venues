@@ -9,4 +9,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface IHomeRepository: IBaseRepository {
     fun getVenuesResponse(venuesRequest: VenuesRequest): Flow<Status<VenuesResponse>>
+    fun logout()
 }

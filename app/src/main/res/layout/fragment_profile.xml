@@ -4,18 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".ui.profile.ProfileFragment">
 
     <include
         android:id="@+id/toolbarView"
         layout="@layout/view_toolbar" />
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:text="@string/venues"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarView" />
+        app:layout_constraintTop_toBottomOf="@id/toolbarView"
+        tools:visibility="visible">
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_8"
+            android:background="@color/white"
+            android:elevation="@dimen/size_8"
+            app:cardCornerRadius="@dimen/size_16"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="@dimen/size_16">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="middle"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/font_18"
+                        tools:text="first name, last name" />
+
+                    <TextView
+                        android:id="@+id/txtAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:ellipsize="middle"
+                        android:maxLines="2"
+                        android:textColor="@color/paynesGrey"
+                        android:textSize="@dimen/font_16"
+                        tools:text="Age: 18" />
+
+                    <TextView
+                        android:id="@+id/txtEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:ellipsize="middle"
+                        android:maxLines="2"
+                        android:textColor="@color/dimGrey"
+                        android:textSize="@dimen/font_16"
+                        tools:text="Email: email@email.com" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/viewFullProgress"
+        layout="@layout/view_full_loading"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/errorLayout"
+        layout="@layout/view_error_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/viewProgress"
+        layout="@layout/view_loading"
+        android:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
