@@ -9,6 +9,7 @@ import com.ahmed.cfholding_venues.domain.usecases.login.ILoginUseCase
 import com.ahmed.cfholding_venues.domain.usecases.login.LoginUseCase
 import com.ahmed.cfholding_venues.utils.connection_utils.IConnectionUtils
 import com.ahmed.cfholding_venues.retrofit.RetrofitModule
+import com.google.gson.Gson
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -27,13 +28,15 @@ abstract class LoginModule {
             connectionUtils: IConnectionUtils,
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
-            mIPreferencesDataSource: IPreferencesDataSource
+            mIPreferencesDataSource: IPreferencesDataSource,
+            mGson: Gson
         ): ILoginRepository {
             return LoginRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
-                mIPreferencesDataSource
+                mIPreferencesDataSource,
+                mGson
             )
         }
     }

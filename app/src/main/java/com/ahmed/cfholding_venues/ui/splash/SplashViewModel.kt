@@ -28,19 +28,32 @@ class SplashViewModel @Inject constructor(
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher,
     handle: SavedStateHandle
 ) : BaseViewModel(handle, mUseCase) {
+
+    private var navigationStatus: Status<Boolean>? = null
+
     private val _navigationMutableSharedFlow = MutableSharedFlow<Status<Boolean>>()
     val navigationMutableSharedFlow = _navigationMutableSharedFlow.asSharedFlow()
 
 
     fun isUserLoggedIn() {
         viewModelScope.launch {
-            delay(100L)
-            mUseCase.isUserLoggedIn().collect {
-                _navigationMutableSharedFlow.emit(it)
-            }
+            if (navigationStatus != null && navigationStatus?.isIdle() == false) {
+                navigationStatus?.let {
+                    setNavigationStatus(it)
 
+                } ?: setNavigationStatus(Status.Idle())
+
+            } else {
+                delay(100L)
+                mUseCase.isUserLoggedIn().collect {
+                    setNavigationStatus(it)
+                }
+            }
         }
     }
 
-
+    private suspend fun setNavigationStatus(status: Status<Boolean>){
+        navigationStatus = status
+        _navigationMutableSharedFlow.emit(status)
+    }
 }

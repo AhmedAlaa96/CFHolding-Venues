@@ -13,6 +13,7 @@ import com.ahmed.cfholding_venues.domain.usecases.splash.ISplashUseCase
 import com.ahmed.cfholding_venues.domain.usecases.splash.SplashUseCase
 import com.ahmed.cfholding_venues.utils.connection_utils.IConnectionUtils
 import com.ahmed.cfholding_venues.retrofit.RetrofitModule
+import com.google.gson.Gson
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -31,13 +32,15 @@ abstract class SplashModule {
             connectionUtils: IConnectionUtils,
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
-            mIPreferencesDataSource: IPreferencesDataSource
+            mIPreferencesDataSource: IPreferencesDataSource,
+            mGson: Gson,
         ): ISplashRepository {
             return SplashRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
-                mIPreferencesDataSource
+                mIPreferencesDataSource,
+                mGson
             )
         }
     }

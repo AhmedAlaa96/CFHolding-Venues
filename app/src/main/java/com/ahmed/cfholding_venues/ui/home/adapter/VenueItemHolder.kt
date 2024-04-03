@@ -25,7 +25,6 @@ class VenueItemHolder(
             bindCategoryText("-")
             bindMovieIcon(null)
         }
-
         bindItemClick(item)
     }
 
@@ -48,10 +47,9 @@ class VenueItemHolder(
 
     private fun bindMovieIcon(category: Category?) {
         if (category == null) {
-            binding.imgCategory.background =
-                (binding.imgCategory.context.getDrawable(R.drawable.ic_error))
-        }else {
-            val imageUrl = "${category.icon?.prefix}${category.mapIcon}${category.icon?.suffix}"
+            binding.imgCategory.setImageResource(R.drawable.ic_error)
+        } else {
+            val imageUrl = "${category.icon?.prefix}64${category.icon?.suffix}"
             binding.imgCategory.setNetworkImage(imageUrl)
         }
     }

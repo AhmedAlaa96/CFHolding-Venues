@@ -11,6 +11,7 @@ import com.ahmed.cfholding_venues.di.IoDispatcher
 import com.ahmed.cfholding_venues.ui.base.BaseRepository
 import com.ahmed.cfholding_venues.ui.base.IBaseRepository
 import com.ahmed.cfholding_venues.utils.connection_utils.IConnectionUtils
+import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -23,8 +24,9 @@ class HomeRepository @Inject constructor(
     private val mIRemoteDataSource: IRemoteDataSource,
     mILocalDataSource: ILocalDataSource,
     mIPreferencesDataSource: IPreferencesDataSource,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, dispatcher),
+    mGson: Gson,
+    @IoDispatcher override val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource,mGson, dispatcher),
     IHomeRepository {
     override fun getVenuesResponse(venuesRequest: VenuesRequest): Flow<Status<VenuesResponse>> {
         return safeApiCalls {

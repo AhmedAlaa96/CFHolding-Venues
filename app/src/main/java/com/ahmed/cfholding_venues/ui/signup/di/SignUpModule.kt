@@ -13,6 +13,7 @@ import com.ahmed.cfholding_venues.domain.usecases.signup.ISignupUseCase
 import com.ahmed.cfholding_venues.domain.usecases.signup.SignupUseCase
 import com.ahmed.cfholding_venues.utils.connection_utils.IConnectionUtils
 import com.ahmed.cfholding_venues.retrofit.RetrofitModule
+import com.google.gson.Gson
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -31,13 +32,15 @@ abstract class SignUpModule {
             connectionUtils: IConnectionUtils,
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
-            mIPreferencesDataSource: IPreferencesDataSource
+            mIPreferencesDataSource: IPreferencesDataSource,
+            mGson: Gson,
         ): ISignUpRepository {
             return SignUpRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
-                mIPreferencesDataSource
+                mIPreferencesDataSource,
+                mGson
             )
         }
     }
