@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/splash_label"
-        android:textColor="@color/black" />
+        android:layout_height="match_parent">
 
+        <ImageButton
+            android:id="@+id/btnChangeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16"
+            android:background="@color/transparent"
+            android:padding="@dimen/size_16"
+            android:src="@drawable/ic_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVenues"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnChangeView"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="16dp"
+            tools:listitem="@layout/item_venue" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/viewProgress"
+        layout="@layout/view_loading"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/viewFullProgress"
+        layout="@layout/view_full_loading"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/errorLayout"
+        layout="@layout/view_error_layout"
+        android:visibility="gone" />
 </FrameLayout>

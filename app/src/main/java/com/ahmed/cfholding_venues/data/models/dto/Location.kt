@@ -19,9 +19,9 @@ data class Location(
     @SerializedName("distance")
     val distance: Int? = null,
     @SerializedName("formattedAddress")
-    val formattedAddress: List<String?>? = null,
+    val formattedAddress: ArrayList<String>? = null,
     @SerializedName("labeledLatLngs")
-    val labeledLatLngs: List<LabeledLatLng?>? = null,
+    val labeledLatLngs: ArrayList<LabeledLatLng>? = null,
     @SerializedName("lat")
     val lat: Double? = null,
     @SerializedName("lng")

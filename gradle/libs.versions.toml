@@ -30,6 +30,7 @@ archCoreVersion= "2.2.0"
 navigationPluginVersion = "2.5.0"
 espressoVersion = "3.5.1"
 navigationUiKtx = "2.7.7"
+playServicesLocation = "21.2.0"
 
 [libraries]
 androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
@@ -71,6 +72,7 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 test-runner = { group = "androidx.test", name = "runner", version.ref = "testRunnerVersion" }
 barista = { group = "com.adevinta.android", name = "barista", version.ref = "baristaVersion"}
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
