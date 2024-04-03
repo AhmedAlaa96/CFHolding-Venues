@@ -1,6 +1,8 @@
 package com.ahmed.cfholding_venues.ui.home
 
 import android.Manifest
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -10,6 +12,10 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -28,8 +34,11 @@ import com.ahmed.cfholding_venues.utils.Constants
 import com.ahmed.cfholding_venues.utils.Utils
 import com.ahmed.cfholding_venues.utils.alternate
 import com.ahmed.cfholding_venues.utils.observe
+import com.ahmed.cfholding_venues.utils.utilities.UIUtils
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.Marker
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -248,4 +257,6 @@ class HomeFragment : BasePermissionsFragment<FragmentHomeBinding>(), ListItemCli
         intent.data = uri
         startActivityForResult(intent, Constants.RequestCodes.PERMISSION_REQUEST_CODE)
     }
+
+
 }

@@ -33,14 +33,12 @@ abstract class SignUpModule {
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
             mIPreferencesDataSource: IPreferencesDataSource,
-            mGson: Gson,
         ): ISignUpRepository {
             return SignUpRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
                 mIPreferencesDataSource,
-                mGson
             )
         }
     }

@@ -15,6 +15,7 @@ import com.ahmed.cfholding_venues.data.models.ValidationField
 import com.ahmed.cfholding_venues.databinding.FragmentSignupBinding
 import com.ahmed.cfholding_venues.ui.base.BaseFragment
 import com.ahmed.cfholding_venues.ui.login.LoginFragmentDirections
+import com.ahmed.cfholding_venues.utils.Constants
 import com.ahmed.cfholding_venues.utils.alternate
 import com.ahmed.cfholding_venues.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,7 +72,13 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
             if (status.isSuccess()) {
                 navigateTo(SignupFragmentDirections.actionToHomeFragment())
             } else {
-                binding.textInputLayoutPassword.error = status.error.alternate("")
+                if (status.error == Constants.General.EMAIL_EXISTS) {
+                    binding.textInputLayoutEmail.error = status.error.alternate("")
+
+                } else {
+                    binding.textInputLayoutPassword.error = status.error.alternate("")
+
+                }
             }
         }
     }

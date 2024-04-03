@@ -33,14 +33,12 @@ abstract class SplashModule {
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
             mIPreferencesDataSource: IPreferencesDataSource,
-            mGson: Gson,
         ): ISplashRepository {
             return SplashRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
                 mIPreferencesDataSource,
-                mGson
             )
         }
     }

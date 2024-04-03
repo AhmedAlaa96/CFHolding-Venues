@@ -22,9 +22,8 @@ class SplashRepository @Inject constructor(
     mIRemoteDataSource: IRemoteDataSource,
     private val mILocalDataSource: ILocalDataSource,
     private val mIPreferencesDataSource: IPreferencesDataSource,
-    mGson: Gson,
-    @IoDispatcher override val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, mGson, dispatcher),
+    @IoDispatcher val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, dispatcher),
     ISplashRepository {
     override fun getUserData(): Flow<Status<User>> {
         return flow<Status<User>> {

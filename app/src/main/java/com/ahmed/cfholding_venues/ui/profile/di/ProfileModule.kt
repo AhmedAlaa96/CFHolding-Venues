@@ -37,14 +37,12 @@ abstract class ProfileModule {
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
             mIPreferencesDataSource: IPreferencesDataSource,
-            mGson: Gson,
         ): IProfileRepository {
             return ProfileRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
                 mIPreferencesDataSource,
-                mGson
             )
         }
     }

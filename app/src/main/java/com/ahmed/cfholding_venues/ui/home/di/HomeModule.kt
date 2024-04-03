@@ -33,14 +33,12 @@ abstract class HomeModule {
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
             mIPreferencesDataSource: IPreferencesDataSource,
-            mGson: Gson,
         ): IHomeRepository {
             return HomeRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
-                mIPreferencesDataSource,
-                mGson
+                mIPreferencesDataSource
             )
         }
     }

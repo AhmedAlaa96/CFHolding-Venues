@@ -18,8 +18,7 @@ abstract class BaseRepository(
     val connectionUtils: IConnectionUtils,
     private val mIRemoteDataSource: IRemoteDataSource,
     private val mIPreferencesDataSource: IPreferencesDataSource,
-    val mGson: Gson,
-    open val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IBaseRepository {
 
 
@@ -29,8 +28,8 @@ abstract class BaseRepository(
         }
 
 
-    protected inline fun <reified T> safeApiCalls(
-        crossinline apiCall: suspend () -> T
+    protected fun <T> safeApiCalls(
+        apiCall: suspend () -> T
     ): Flow<Status<T>> {
         return flow {
             if (isConnected) {
@@ -42,21 +41,25 @@ abstract class BaseRepository(
                         is HttpException -> {
                             when (throwable.code()) {
                                 in 400..499 -> {
-                                    emit(Status.Error(error = throwable.message)) as Unit
+                                    return@flow emit(
+                                        Status.ServerError(
+                                            error = throwable.response()?.errorBody()?.string()
+                                        )
+                                    )
                                 }
 
                                 else -> {
-                                    emit(Status.Error(error = throwable.message)) as Unit
+                                    return@flow emit(Status.Error(error = throwable.message)) as Unit
                                 }
                             }
                         }
 
                         is SocketException -> {
-                            emit(Status.Error(error = throwable.message)) as Unit
+                            return@flow emit(Status.Error(error = throwable.message)) as Unit
                         }
 
                         else -> {
-                            emit(Status.Error(error = throwable.message)) as Unit
+                            return@flow emit(Status.Error(error = throwable.message)) as Unit
                         }
                     }
                 }

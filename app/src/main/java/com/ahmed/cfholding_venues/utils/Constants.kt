@@ -9,6 +9,7 @@ object Constants {
     }
 
     object General {
+        const val EMAIL_EXISTS = "The email already exists"
         const val PACKAGE_NAME: String= "com.ahmed.cfholding_venues"
         const val PASSWORD_REGEX = "[A-Za-z0-9!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]"
         const val EMPTY_TEXT = ""
