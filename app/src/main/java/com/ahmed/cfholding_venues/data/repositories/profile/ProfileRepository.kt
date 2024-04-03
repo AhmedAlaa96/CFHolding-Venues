@@ -22,9 +22,8 @@ class ProfileRepository @Inject constructor(
     mIRemoteDataSource: IRemoteDataSource,
     mILocalDataSource: ILocalDataSource,
     private val mIPreferencesDataSource: IPreferencesDataSource,
-    mGson: Gson,
-    @IoDispatcher override val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, mGson, dispatcher),
+    @IoDispatcher val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, dispatcher),
     IProfileRepository {
     override fun getUserData(): Flow<Status<User>> {
         return flow<Status<User>> {

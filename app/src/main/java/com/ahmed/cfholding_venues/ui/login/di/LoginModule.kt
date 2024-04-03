@@ -29,14 +29,12 @@ abstract class LoginModule {
             mIRemoteDataSource: IRemoteDataSource,
             mILocalDataSource: ILocalDataSource,
             mIPreferencesDataSource: IPreferencesDataSource,
-            mGson: Gson
         ): ILoginRepository {
             return LoginRepository(
                 connectionUtils,
                 mIRemoteDataSource,
                 mILocalDataSource,
                 mIPreferencesDataSource,
-                mGson
             )
         }
     }

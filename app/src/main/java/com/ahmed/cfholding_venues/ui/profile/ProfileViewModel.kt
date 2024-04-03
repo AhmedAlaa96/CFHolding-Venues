@@ -10,7 +10,9 @@ import com.ahmed.cfholding_venues.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,8 +22,8 @@ class ProfileViewModel @Inject constructor(
     handle: SavedStateHandle,
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher,
 ) : BaseViewModel(handle, mUseCase) {
-    private val _userDataSharedFlow = MutableSharedFlow<Status<User>>()
-    val userDataSharedFlow = _userDataSharedFlow.asSharedFlow()
+    private val _userDataSharedFlow = MutableStateFlow<Status<User>>(Status.Idle())
+    val userDataSharedFlow = _userDataSharedFlow.asStateFlow()
 
 
     init {

@@ -11,6 +11,9 @@ interface UsersDao {
     @Query("SELECT * FROM users Where email=:email AND password =:password")
     fun getUserByEmailAndPassword(email: String?, password: String?): User?
 
+    @Query("SELECT * FROM users Where email=:email")
+    fun getUserByEmail(email: String?): User?
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateUser(user: User)
 

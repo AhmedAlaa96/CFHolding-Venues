@@ -14,3 +14,5 @@
 .cxx
 *.apk
 local.properties
+*.json
+*.dm

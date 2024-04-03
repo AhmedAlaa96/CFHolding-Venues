@@ -11,7 +11,7 @@ import com.ahmed.cfholding_venues.utils.setNetworkImage
 
 class VenueItemHolder(
     private val binding: ItemVenueBinding,
-    private val mMatchItemClickListener: ListItemClickListener<Venue>? = null
+    mMatchItemClickListener: ListItemClickListener<Venue>? = null
 ) : BaseViewHolder<Venue>(binding, mMatchItemClickListener) {
     override fun bind(item: Venue) {
         bindMovieTitle(item.name)
@@ -25,11 +25,6 @@ class VenueItemHolder(
             bindCategoryText("-")
             bindMovieIcon(null)
         }
-        bindItemClick(item)
-    }
-
-    private fun bindItemClick(item: Venue) {
-        itemView.setOnClickListener { mMatchItemClickListener?.onItemClick(item, adapterPosition) }
     }
 
     private fun bindMovieTitle(title: String?) {

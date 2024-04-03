@@ -8,12 +8,13 @@ import com.ahmed.cfholding_venues.data.models.dto.VenuesResponse
 import com.ahmed.cfholding_venues.data.repositories.home.IHomeRepository
 import com.ahmed.cfholding_venues.data.repositories.login.ILoginRepository
 import com.ahmed.cfholding_venues.ui.base.BaseUseCase
+import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class HomeUseCase @Inject constructor(private val repository: IHomeRepository) :
-    BaseUseCase(repository), IHomeUseCase {
+class HomeUseCase @Inject constructor(private val repository: IHomeRepository, mGson: Gson) :
+    BaseUseCase(repository, mGson), IHomeUseCase {
     override fun getVenuesResponse(venuesRequest: VenuesRequest): Flow<Status<ArrayList<Venue>>> {
         return repository.getVenuesResponse(venuesRequest)
             .map(::mapGetVenuesResponse)
@@ -30,10 +31,18 @@ class HomeUseCase @Inject constructor(private val repository: IHomeRepository) :
                 Status.Success(status.data?.response?.venues)
             }
 
+            StatusCode.SERVER_ERROR -> {
+                val serverStatus = onServerError(status) {
+                    it.meta?.errorDetail
+                }
+                Status.CopyStatus(serverStatus, null)
+            }
+
             else -> {
                 Status.CopyStatus(status, null)
             }
         }
     }
+
 
 }

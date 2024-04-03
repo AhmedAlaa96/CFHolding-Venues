@@ -23,6 +23,16 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("../keystore/cf-holding-venues.jks")
+            storePassword = "venues123456"
+            keyAlias = "venues"
+            keyPassword = "venues123456"
+
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -30,6 +40,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 
@@ -45,8 +56,16 @@ android {
     productFlavors {
         create("live") {
             buildConfigField("String", "BASE_NETWORK_URL", "\"https://api.foursquare.com/\"")
-            buildConfigField("String", "CLIENT_ID", "\"4EQRZPSGKBZGFSERGJY055FRW2OSPJRZYR4C3J0JN2CQQFIV\"")
-            buildConfigField("String", "CLIENT_SECRET", "\"AJR4B5LLRONWAJWJJOACHAFLCWS2YJAZMGQNFFZQP0IB3THR\"")
+            buildConfigField(
+                "String",
+                "CLIENT_ID",
+                "\"4EQRZPSGKBZGFSERGJY055FRW2OSPJRZYR4C3J0JN2CQQFIV\""
+            )
+            buildConfigField(
+                "String",
+                "CLIENT_SECRET",
+                "\"AJR4B5LLRONWAJWJJOACHAFLCWS2YJAZMGQNFFZQP0IB3THR\""
+            )
         }
     }
 

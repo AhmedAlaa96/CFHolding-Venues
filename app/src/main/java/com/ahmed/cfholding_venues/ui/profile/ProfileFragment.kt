@@ -58,6 +58,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(), IToolbar {
                     onUserDataSuccess(status.data)
                 }
 
+                StatusCode.IDLE -> {}
+
                 else -> {
                     onUserDataError(status.error)
                 }

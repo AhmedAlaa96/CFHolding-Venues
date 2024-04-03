@@ -24,9 +24,8 @@ class HomeRepository @Inject constructor(
     private val mIRemoteDataSource: IRemoteDataSource,
     mILocalDataSource: ILocalDataSource,
     private val mIPreferencesDataSource: IPreferencesDataSource,
-    mGson: Gson,
-    @IoDispatcher override val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, mGson, dispatcher),
+    @IoDispatcher val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, dispatcher),
     IHomeRepository {
     override fun getVenuesResponse(venuesRequest: VenuesRequest): Flow<Status<VenuesResponse>> {
         return safeApiCalls {

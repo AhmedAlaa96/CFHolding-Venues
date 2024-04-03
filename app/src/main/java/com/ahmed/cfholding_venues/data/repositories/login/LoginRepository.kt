@@ -22,9 +22,8 @@ class LoginRepository @Inject constructor(
     mIRemoteDataSource: IRemoteDataSource,
     private val mILocalDataSource: ILocalDataSource,
     private val mIPreferencesDataSource: IPreferencesDataSource,
-    mGson: Gson,
-    @IoDispatcher override val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource,mGson, dispatcher),
+    @IoDispatcher val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, dispatcher),
     ILoginRepository {
     override fun login(email: String, password: String): Flow<Status<User>> {
         return flow {
