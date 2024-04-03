@@ -3,6 +3,7 @@
     <color name="colorPrimary">@color/white</color>
     <color name="colorAccent">@color/black</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="offWhite">#FFE1E1E1</color>
     <color name="whiteOpacity10">#1AFFFFFF</color>
     <color name="red">#FFFF0000</color>
     <color name="black">#FF000000</color>

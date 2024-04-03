@@ -61,6 +61,10 @@
             app:popUpToInclusive="true" />
     </fragment>
     <include app:graph="@navigation/main_nav" />
+    <action
+        android:id="@+id/to_login_fragment"
+        app:destination="@id/loginFragment"
+        app:launchSingleTop="true" />
 
 
 </navigation>

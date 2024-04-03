@@ -1,10 +1,8 @@
-package com.ahmed.cfholding_venues.data.repositories.home
+package com.ahmed.cfholding_venues.data.repositories.profile
 
 import com.ahmed.cfholding_venues.data.local.ILocalDataSource
 import com.ahmed.cfholding_venues.data.models.Status
 import com.ahmed.cfholding_venues.data.models.dto.User
-import com.ahmed.cfholding_venues.data.models.dto.VenuesRequest
-import com.ahmed.cfholding_venues.data.models.dto.VenuesResponse
 import com.ahmed.cfholding_venues.data.remote.IRemoteDataSource
 import com.ahmed.cfholding_venues.data.sharedprefrences.IPreferencesDataSource
 import com.ahmed.cfholding_venues.di.IoDispatcher
@@ -19,22 +17,19 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class HomeRepository @Inject constructor(
+class ProfileRepository @Inject constructor(
     connectionUtils: IConnectionUtils,
-    private val mIRemoteDataSource: IRemoteDataSource,
+    mIRemoteDataSource: IRemoteDataSource,
     mILocalDataSource: ILocalDataSource,
     private val mIPreferencesDataSource: IPreferencesDataSource,
     mGson: Gson,
     @IoDispatcher override val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : BaseRepository(connectionUtils, mIRemoteDataSource, mIPreferencesDataSource, mGson, dispatcher),
-    IHomeRepository {
-    override fun getVenuesResponse(venuesRequest: VenuesRequest): Flow<Status<VenuesResponse>> {
-        return safeApiCalls {
-            mIRemoteDataSource.getVenuesResponse(venuesRequest)
-        }
+    IProfileRepository {
+    override fun getUserData(): Flow<Status<User>> {
+        return flow<Status<User>> {
+            emit(Status.Success(mIPreferencesDataSource.getUserData()))
+        }.flowOn(dispatcher)
     }
 
-    override fun logout() {
-        mIPreferencesDataSource.clearUserData()
-    }
 }

@@ -10,7 +10,6 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -30,9 +29,7 @@ import com.ahmed.cfholding_venues.utils.Utils
 import com.ahmed.cfholding_venues.utils.alternate
 import com.ahmed.cfholding_venues.utils.observe
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.Marker
 import dagger.hilt.android.AndroidEntryPoint
 
 
